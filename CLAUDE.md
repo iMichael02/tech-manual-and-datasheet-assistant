@@ -1,20 +1,30 @@
-# Project description (general)
+# Technical Manual & Datasheet Assistant
 
-You are tasked with the creation of a domain-specific LLM-based assistance chatbot.
+Course project (EPF Gen-AI): a domain chatbot that answers technical questions about the sensors and instruments in
+`data/datasheets/`, citing document and page. The deliverable is the assistant plus its evidence: stated success criteria,
+an evaluation, and a comparison of implementation methods (pre-prompting, RAG, fine-tuning/LoRA). RAG is the chosen method.
 
-It must answer questions within it specified domain, in a manner consistent with any documentation given by your client.
+**Faithfulness outranks coverage.** A wrong number is worse than a refusal, so every change is judged on two things: answers
+stay grounded in the excerpts with `[n]` citations, and out-of-scope questions are refused.
 
-You will specify the problem and success criteria, define evaluation methodologies and try out different implementation methods (pre-prompting, RAG, fine-tuning, LoRA, etc.).
+## Verify a change
+- `pytest` (unit tests), then `python3 -m assistant eval` (offline retrieval + refusal metrics). Compare against the numbers in `docs/evaluation.md`.
+- Anything touching prompts, retrieval or ingest also needs `python3 -m assistant --backend ollama eval --generation --norag` (local Ollama, `llama3.1:8b` pulled).
+- Setup: `pip install -e ".[app,server,dev]"` (the package lives in `src/`; commands are in `README.md`).
 
-_Disclaimer_: the description of each use case was co-writen with the help of an LLM.
+## Gotchas the code does not show
+- **The index is derived.** `data/index/chunks.json` bakes in `catalog.py` metadata and the extracted text. Re-run `python3 -m assistant ingest` after editing `catalog.py` or `ingest.py`; a stale index once produced misleading metrics.
+- **File names mislead.** `DHT22.pdf` is an older AM2303 datasheet (3.3–6 V) that disagrees with the AM2302/AM2303 PDFs; `1893_datasheet.pdf` is the MPL3115A2. The disagreement is deliberate test data: answers cite each source and flag the conflict.
+- **Tables extract badly.** Table pages use `pdftotext -layout`, prose uses reading order. No metric detects a garbled table (evidence regexes match garbled text too), so read table-derived answers by hand.
+- **Triage a failing eval question** as retrieval, generation or grader before changing code. Grading is keyword regex; keep evidence regexes specific to the clean text.
+- **The scope gate is tuned on a small set** (`min_coverage`). Re-run the eval after adding documents.
+- **PDFs stay out of git** (`data/datasheets/*` is ignored), yet the committed index holds their text: keep the repo private.
+- **Streamlit Cloud cannot reach local Ollama.** Hosted runs use Claude (`ANTHROPIC_API_KEY`) or fall back to extractive mode.
 
-# The task (specific)
+## Adding a document
+Drop the PDF in `data/datasheets/`, add its entry to `src/assistant/catalog.py`, run `ingest`, add gold questions to
+`src/assistant/evaluation/questions.json`; done when the eval's gold-set sanity line shows every item verifiable in the corpus.
 
-## Technical Manual & Datasheet Assistant
-
-- _Description:_ Develop an assistant that answers specific technical questions by referencing manuals, datasheets, and product specifications, helping users troubleshoot or understand complex equipment and systems.
-- _Use Case:_ Assist engineers, technicians, or customers in quickly finding relevant technical information, specifications, or troubleshooting steps for machinery, electronic devices, or software systems.
-- _Challenges:_ Managing the diversity of technical documents, ensuring accurate interpretation of complex data, handling specific queries about system configurations, and efficiently retrieving relevant information from dense technical texts.
-
-**Reference data**
-A set of datasheets and manuals on electronic parts and sensors used in the school is acessible in Industrial-DataSheets folder.
+## Further reading
+- `docs/evaluation.md`: before changing retrieval, prompts or metrics (results, limits, open misses).
+- `docs/deployment.md`: before touching `apps/`, `requirements.txt` or packaging.
