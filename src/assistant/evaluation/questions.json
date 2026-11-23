@@ -1,0 +1,372 @@
+{
+ "answerable": [
+  {
+   "q": "What is the maximum conversion time of the DS18B20 at 12-bit resolution?",
+   "docs": [
+    "DS18B20.pdf"
+   ],
+   "evidence": [
+    "750\\s*ms"
+   ],
+   "answer": [
+    "750"
+   ]
+  },
+  {
+   "q": "Can the DS18B20 be powered from the data line without an external supply?",
+   "docs": [
+    "DS18B20.pdf"
+   ],
+   "evidence": [
+    "parasite power"
+   ],
+   "answer": [
+    "parasit|data line"
+   ]
+  },
+  {
+   "q": "How does the DS18B20 let several sensors share one bus?",
+   "docs": [
+    "DS18B20.pdf"
+   ],
+   "evidence": [
+    "unique 64-bit serial code"
+   ],
+   "answer": [
+    "64-bit"
+   ]
+  },
+  {
+   "q": "What is the operating temperature range of the DS18B20?",
+   "docs": [
+    "DS18B20.pdf"
+   ],
+   "evidence": [
+    "-55.{0,3}C to \\+125"
+   ],
+   "answer": [
+    "-55",
+    "125"
+   ]
+  },
+  {
+   "q": "What temperature resolution does the MAX31855 provide?",
+   "docs": [
+    "MAX31855.pdf"
+   ],
+   "evidence": [
+    "14-Bit, 0\\.25|Thermocouple Temperature Data; 0\\.25"
+   ],
+   "answer": [
+    "0\\.25"
+   ]
+  },
+  {
+   "q": "Which fault conditions does the MAX31855 detect?",
+   "docs": [
+    "MAX31855.pdf"
+   ],
+   "evidence": [
+    "[Ff]ault"
+   ],
+   "answer": [
+    "short",
+    "open"
+   ]
+  },
+  {
+   "q": "What does the MAX31855 do for cold-junction compensation?",
+   "docs": [
+    "MAX31855.pdf"
+   ],
+   "evidence": [
+    "cold-junction compensation"
+   ],
+   "answer": [
+    "cold"
+   ]
+  },
+  {
+   "q": "What is the I2C address of the BMP280 when SDO is connected to VDDIO?",
+   "docs": [
+    "BST-BMP280-DS001-11.pdf"
+   ],
+   "evidence": [
+    "0x77"
+   ],
+   "answer": [
+    "0x77"
+   ]
+  },
+  {
+   "q": "What is the I2C address of the BMP280 when SDO is grounded?",
+   "docs": [
+    "BST-BMP280-DS001-11.pdf"
+   ],
+   "evidence": [
+    "0x76"
+   ],
+   "answer": [
+    "0x76"
+   ]
+  },
+  {
+   "q": "What is the BMP280 pressure measurement range?",
+   "docs": [
+    "BST-BMP280-DS001-11.pdf"
+   ],
+   "evidence": [
+    "300 \\. ?\\. ?\\. ?1100|300 … 1100"
+   ],
+   "answer": [
+    "300",
+    "1100"
+   ]
+  },
+  {
+   "q": "Which power modes does the BMP280 have?",
+   "docs": [
+    "BST-BMP280-DS001-11.pdf"
+   ],
+   "evidence": [
+    "forced mode"
+   ],
+   "answer": [
+    "forced",
+    "normal",
+    "sleep"
+   ]
+  },
+  {
+   "q": "What pressure range does the BMP180 measure?",
+   "docs": [
+    "BST-BMP180-DS000-09.pdf"
+   ],
+   "evidence": [
+    "300 \\.\\.\\. 1100 ?hPa"
+   ],
+   "answer": [
+    "300",
+    "1100"
+   ]
+  },
+  {
+   "q": "What oversampling settings does the BMP180 support?",
+   "docs": [
+    "BST-BMP180-DS000-09.pdf"
+   ],
+   "evidence": [
+    "oversampling_setting"
+   ],
+   "answer": [
+    "oversampling"
+   ]
+  },
+  {
+   "q": "What is the I2C slave address of the MPL3115A2?",
+   "docs": [
+    "1893_datasheet.pdf"
+   ],
+   "evidence": [
+    "0x60"
+   ],
+   "answer": [
+    "0x60"
+   ]
+  },
+  {
+   "q": "What is the supply voltage range of the MPL3115A2?",
+   "docs": [
+    "1893_datasheet.pdf"
+   ],
+   "evidence": [
+    "1\\.95 ?V to 3\\.6 ?V"
+   ],
+   "answer": [
+    "1.95",
+    "3.6"
+   ]
+  },
+  {
+   "q": "How fast can the MPL3115A2 I2C interface run?",
+   "docs": [
+    "1893_datasheet.pdf"
+   ],
+   "evidence": [
+    "400 kHz"
+   ],
+   "answer": [
+    "400"
+   ]
+  },
+  {
+   "q": "What is the 7-bit I2C device address of the HTU21D?",
+   "docs": [
+    "1899_HTU21D.pdf"
+   ],
+   "evidence": [
+    "0x40"
+   ],
+   "answer": [
+    "0x40"
+   ]
+  },
+  {
+   "q": "Is a soft reset recommended for the HTU21D at start-up?",
+   "docs": [
+    "1899_HTU21D.pdf"
+   ],
+   "evidence": [
+    "Soft reset is recommended"
+   ],
+   "answer": [
+    "soft reset"
+   ]
+  },
+  {
+   "q": "What measurement resolution does the HDC1008 offer for humidity and temperature?",
+   "docs": [
+    "hdc1008.pdf"
+   ],
+   "evidence": [
+    "14 [Bb]it"
+   ],
+   "answer": [
+    "14"
+   ]
+  },
+  {
+   "q": "How does the on-chip heater of the HDC1008 work?",
+   "docs": [
+    "hdc1008.pdf"
+   ],
+   "evidence": [
+    "[Hh]eater"
+   ],
+   "answer": [
+    "heater"
+   ]
+  },
+  {
+   "q": "What supply voltage does the AM2303 need?",
+   "docs": [
+    "Digital+humidity+and+temperature+sensor+AM2303.pdf",
+    "DHT22.pdf"
+   ],
+   "evidence": [
+    "3\\.3-(5\\.5|6)V"
+   ],
+   "answer": [
+    "3\\.3"
+   ]
+  },
+  {
+   "q": "What supply voltage should the AM2302 be powered with?",
+   "docs": [
+    "Digital+humidity+and+temperature+sensor+AM2302.pdf"
+   ],
+   "evidence": [
+    "3\\.3-5\\.5V"
+   ],
+   "answer": [
+    "3.3",
+    "5.5"
+   ]
+  },
+  {
+   "q": "What is the sensing period of the AM2303?",
+   "docs": [
+    "Digital+humidity+and+temperature+sensor+AM2303.pdf",
+    "DHT22.pdf"
+   ],
+   "evidence": [
+    "Average: 2s"
+   ],
+   "answer": [
+    "2"
+   ]
+  },
+  {
+   "q": "What infrared sensing element does the TMP006 use?",
+   "docs": [
+    "tmp006ug.pdf"
+   ],
+   "evidence": [
+    "thermopile"
+   ],
+   "answer": [
+    "thermopile"
+   ]
+  },
+  {
+   "q": "How do I calibrate the TMP006 system?",
+   "docs": [
+    "tmp006ug.pdf"
+   ],
+   "evidence": [
+    "Calibrating the System|calibrat"
+   ],
+   "answer": [
+    "calibrat"
+   ]
+  },
+  {
+   "q": "What is the maximum real-time sample rate of the DS1000E oscilloscope?",
+   "docs": [
+    "Data+Sheet+DS1000E.pdf",
+    "Users Guide DS1000E.pdf"
+   ],
+   "evidence": [
+    "1GSa/s"
+   ],
+   "answer": [
+    "1 ?GSa/s"
+   ]
+  },
+  {
+   "q": "How do I get a quick automatic setup on the Rigol DS1000E?",
+   "docs": [
+    "Users Guide DS1000E.pdf"
+   ],
+   "evidence": [
+    "AUTO button"
+   ],
+   "answer": [
+    "AUTO"
+   ]
+  },
+  {
+   "q": "What safety precautions apply when connecting probes to the DS1000E?",
+   "docs": [
+    "Users Guide DS1000E.pdf"
+   ],
+   "evidence": [
+    "Connect The Probe"
+   ],
+   "answer": [
+    "probe"
+   ]
+  },
+  {
+   "q": "My DHT22 returns no data. What should I check?",
+   "docs": [
+    "Digital+humidity+and+temperature+sensor+AM2302.pdf"
+   ],
+   "evidence": [
+    "don't send any instruction|pull-up|DATA"
+   ],
+   "answer": [
+    "power"
+   ]
+  }
+ ],
+ "out_of_scope": [
+  "What is the capital of France?",
+  "Give me a recipe for pancakes.",
+  "Who won the football world cup in 2018?",
+  "What is the weather like in Paris today?",
+  "What is the I2C address of the BME680?",
+  "What is the maximum sample rate of the Tektronix TDS2024C?",
+  "What is the resolution of the LM35 temperature sensor?"
+ ]
+}

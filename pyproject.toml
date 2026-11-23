@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "datasheet-assistant"
+version = "0.1.0"
+description = "RAG assistant for sensor/instrument datasheets, with citations and a scope gate"
+requires-python = ">=3.10"
+dependencies = ["requests>=2.31"]
+
+[project.optional-dependencies]
+app = ["streamlit>=1.40"]                         # web UI
+server = ["fastapi>=0.115", "uvicorn>=0.30"]      # Open WebUI tool server
+dev = ["pytest>=8", "httpx>=0.27"]                # tests (httpx: FastAPI TestClient)
+
+[project.scripts]
+datasheet-assistant = "assistant.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"assistant.evaluation" = ["questions.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["apps"]    # lets tests import tool_server

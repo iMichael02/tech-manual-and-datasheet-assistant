@@ -1,0 +1,8 @@
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+.streamlit/secrets.toml
+Industry-Datasheets.zip
+data/datasheets/*

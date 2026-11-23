@@ -1,0 +1,3 @@
+# Used by Streamlit Community Cloud (and `pip install -r requirements.txt`): installs the package + web UI.
+# System dependency: poppler-utils (pdftotext) -- see packages.txt.
+-e .[app]
